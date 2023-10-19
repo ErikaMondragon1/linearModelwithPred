@@ -17,15 +17,37 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ## Model1
 find an equation that expresses SIMSA as a function of ARM
 
+## Results
 
+## Graphical Results
 
 ```{r}
-Model1 = lm(SIMS~ARM, data = data)
-print(summary(Model1))
+plot(SIMS~ARM,data=data)
+```
+
+As the ARM strength increases, the SIMS score also increases. This is a postive trend between ARM strength and SIMS score trned, not a perfect relationship
+
+## Numerical Results 
+
+```{r}
+cor(data$SIMS,data$ARM)
+```
+
+We have a positive correlation, with noise. 
+
+## Inference
+
+```{r}
+model1 <- lm(SIMS~ARM,data=data)
+summary.lm(model1)
 ```
 
 
+
 ```{r}
-plot(data$SIMS,data$ARM)
+model1 <- lm(SIMS~ARM,data=data)
+plot(data$SIMS~data$ARM)
+abline(model1, col="red")
 ```
 
+The red line represents the best linear fit. For an increase of a 1 in ARM strength, SIM score increases by 0.0545. 
