@@ -15,7 +15,7 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 
 ## Model1
-find an equation that expresses SIMSA as a function of ARM
+find an equation that expresses SIMS as a function of ARM
 
 ## Results
 
@@ -25,7 +25,7 @@ find an equation that expresses SIMSA as a function of ARM
 plot(SIMS~ARM,data=data)
 ```
 
-As the ARM strength increases, the SIMS score also increases. This is a postive trend between ARM strength and SIMS score trned, not a perfect relationship
+As the ARM strength increases, the SIMS score also increases. This is a positive trend between ARM strength and SIMS score trend, not a perfect relationship
 
 ## Numerical Results 
 
@@ -43,7 +43,6 @@ summary.lm(model1)
 ```
 
 
-
 ```{r}
 model1 <- lm(SIMS~ARM,data=data)
 plot(data$SIMS~data$ARM)
@@ -51,3 +50,69 @@ abline(model1, col="red")
 ```
 
 The red line represents the best linear fit. For an increase of a 1 in ARM strength, SIM score increases by 0.0545. 
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(model1, newdata, interval="prediction")
+```
+
+
+## Model 2
+
+Find an equation that expresses SIMS as a function of GRIP
+
+
+
+## Results
+
+## Graphical Results
+
+```{r}
+plot(SIMS~GRIP,data=data)
+```
+
+As the GRIP strength increases, the SIMS score also increases. This is a positive trend between GRIP strength and SIMS score trend. This is not a perfect relationship
+
+
+## Numerical Results
+
+```{r}
+cor(data$SIMS,data$GRIP)
+```
+
+We have a positive correlation, with noise. 
+
+## Inference 
+
+```{r}
+model2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model2)
+```
+
+
+
+```{r}
+model2 <- lm(SIMS~GRIP,data=data)
+plot(data$SIMS~data$GRIP)
+abline(model2, col="blue")
+```
+
+The red line represents the best linear fit. For an increase of a 1 in GRIP strength, SIM score increases by 0.0454. 
+
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(model2, newdata, interval="prediction")
+```
+
+## Model3
+
+find an equation that expresses SIMS as a function of ARM+GRIP
+
+## Results
+
+## Graphical Results
+
+## Numerical Results
+
+## Inference
