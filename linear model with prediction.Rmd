@@ -14,6 +14,11 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ```
 
 
+## Model1
+find an equation that expresses SIMSA as a function of ARM
+
+
+
 ```{r}
 Model1 = lm(SIMS~ARM, data = data)
 print(summary(Model1))
