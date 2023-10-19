@@ -113,6 +113,21 @@ find an equation that expresses SIMS as a function of ARM+GRIP
 
 ## Graphical Results
 
+There are no graphical results for model3 because I cannot put two variables on one axis.
+
 ## Numerical Results
 
+There are no numerical results for model3 since we have SIMS as a function of two variable
+
 ## Inference
+
+
+```{r}
+model3 <- lm(SIMS~ARM+GRIP,data=data)
+summary.lm(model3)
+```
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(model3, newdata, interval="prediction")
+```
